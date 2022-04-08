@@ -2,7 +2,7 @@ import { Add, Remove } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import imgA from "/home/lautaro/story/src/assets/images/frames.jpg";
+import imgA from "../assets/images/frames.jpg";
 
 const Container = styled.div``;
 

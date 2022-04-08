@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import RegisterImg from "/home/lautaro/story/src/assets/images/Register.jpg";
+import RegisterImg from "../assets/images/Register.jpg";
 
 const Container = styled.div`
   width: 100vw;

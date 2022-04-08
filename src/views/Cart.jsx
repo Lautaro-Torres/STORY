@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import imgA from "/home/lautaro/story/src/assets/images/abstractC.jpg";
+import imgA from "../assets/images/abstractC.jpg";
 import { Add, Remove } from "@material-ui/icons";
 
 const Container = styled.div``;

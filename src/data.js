@@ -1,9 +1,9 @@
-import imgA from "/home/lautaro/story/src/assets/images/abstractC.jpg";
-import imgB from "/home/lautaro/story/src/assets/images/cityC.jpg";
-import imgC from "/home/lautaro/story/src/assets/images/driveC.jpg";
-import imgD from "/home/lautaro/story/src/assets/images/frames.jpg";
-import imgE from "/home/lautaro/story/src/assets/images/prints.jpg";
-import imgF from "/home/lautaro/story/src/assets/images/postcards.jpg";
+import imgA from "./assets/images/abstractC.jpg";
+import imgB from "./assets/images/cityC.jpg";
+import imgC from "./assets/images/driveC.jpg";
+import imgD from "./assets/images/frames.jpg";
+import imgE from "./assets/images/prints.jpg";
+import imgF from "./assets/images/postcards.jpg";
 
 export const sliderItems = [
   {
