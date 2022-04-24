@@ -1,8 +1,12 @@
-import { Add, Remove } from "@material-ui/icons";
 import React from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import imgA from "../assets/images/frames.jpg";
+import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 
@@ -99,34 +103,66 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, quantity, size }));
+  };
+
   return (
     <Container>
       <Navbar />
       <Wrapper>
         <ImageContainer>
-          <Image src={imgA} />
+          <Image src={product.img} />
         </ImageContainer>
         <InfoContainer>
-          <Title> Space Age Love Song</Title>
-          <Description> 20x40 cm Frame</Description>
-          <Price>$600</Price>
+          <Title>{product.title}</Title>
+          <Description>{product.desc}</Description>
+          <Price>${product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle> Size </FilterTitle>
-              <FilterSize>
-                <FilterSizeOptions>Large</FilterSizeOptions>
-                <FilterSizeOptions>Medium</FilterSizeOptions>
-                <FilterSizeOptions>Small</FilterSizeOptions>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
+                {product.size?.map((s) => (
+                  <FilterSizeOptions key={s}>{s}</FilterSizeOptions>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>Add To Cart</Button>
+            <Button onClick={handleClick}>Add To Cart</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

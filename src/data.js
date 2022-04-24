@@ -34,19 +34,19 @@ export const categories = [
     id: 1,
     img: imgD,
     title: "FRAMES",
-    cat: "frames"
+    cat: "women"
   },
   {
     id: 2,
     img: imgE,
     title: "PRINTS",
-    cat: "prints"
+    cat: "coat"
   },
   {
     id: 3,
     img: imgF,
     title: "POSTCARDS",
-    cat: "postcards"
+    cat: "jeans"
   },
 ];
 export const popularProducts = [
