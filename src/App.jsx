@@ -1,13 +1,21 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Product from "./views/ProductSingleView";
 import Home from "./views/Home";
 import ProductList from "./views/ProductsList";
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Cart from "./views/Cart";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 const App = () => {
+  const user = useSelector((state) => state.user.currentUser);
+
   return (
     <Router>
       <Routes>
@@ -19,9 +27,12 @@ const App = () => {
 
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
 
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={user ? <Navigate to="/" /> : <Register />}
+        />
       </Routes>
     </Router>
   );

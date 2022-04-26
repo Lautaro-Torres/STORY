@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import imgA from "../assets/images/abstractC.jpg";
 import { Add, Remove } from "@material-ui/icons";
+import { useSelector } from "react-redux";
 
 const Container = styled.div``;
 
@@ -134,6 +135,8 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+
   return (
     <Container>
       <Navbar />
@@ -149,36 +152,40 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src={imgA} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Abstract
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 651346840356
-                  </ProductId>
-                  <ProductSize>
-                    <b>Size:</b> Large
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Remove />
-                  <ProductAmount>2</ProductAmount>
-                  <Add />
-                </ProductAmountContainer>
-                <ProductPrice>$ 600</ProductPrice>
-              </PriceDetail>
-            </Product>
+            {cart.products.map((product) => (
+              <Product>
+                <ProductDetail>
+                  <Image src={product.img} />
+                  <Details>
+                    <ProductName>
+                      <b>Product:</b> {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID:</b> {product._id}
+                    </ProductId>
+                    <ProductSize>
+                      <b>Size:</b> {product.size}
+                    </ProductSize>
+                  </Details>
+                </ProductDetail>
+                <PriceDetail>
+                  <ProductAmountContainer>
+                    <Remove />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <Add />
+                  </ProductAmountContainer>
+                  <ProductPrice>
+                    $ {product.price * product.quantity}
+                  </ProductPrice>
+                </PriceDetail>
+              </Product>
+            ))}
           </Info>
           <Summary>
             <SummaryTitle>TOTAL COMPRA</SummaryTitle>
             <SummaryItem type="total">
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$600</SummaryItemPrice>
+              <SummaryItemText>Total </SummaryItemText>
+              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
             </SummaryItem>
             <Button>COMPRAR</Button>
           </Summary>
