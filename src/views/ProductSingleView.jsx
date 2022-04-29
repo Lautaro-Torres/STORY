@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
@@ -137,7 +136,6 @@ const Product = () => {
 
   return (
     <Container>
-      <Navbar />
       <Wrapper>
         <ImageContainer>
           <Image src={product.img} />

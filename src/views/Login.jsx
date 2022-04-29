@@ -8,11 +8,7 @@ import RegisterImg from "../assets/images/Register.jpg";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url(${RegisterImg});
+  background: url(${RegisterImg});
   background-size: cover;
   display: flex;
   align-items: center;

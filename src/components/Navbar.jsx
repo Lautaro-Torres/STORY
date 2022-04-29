@@ -37,6 +37,7 @@ const Input = styled.input`
 
 const Logo = styled.h1`
   font-weight: bold;
+  text-decoration: none;
 `;
 
 const Center = styled.div`
@@ -56,6 +57,10 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
+const linkStyle = {
+  textDecoration: "none",
+};
+
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
 
@@ -69,12 +74,21 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>STORY</Logo>
+          <Link to="/" style={linkStyle}>
+            <Logo>STORY</Logo>
+          </Link>
         </Center>
+
         <Right>
-          <MenuItem>Register</MenuItem>
-          <MenuItem>Sign In</MenuItem>
-          <Link to="/cart">
+          <Link to="/register" style={linkStyle}>
+            <MenuItem>Register</MenuItem>
+          </Link>
+
+          <Link to="/login" style={linkStyle}>
+            <MenuItem>Sign In</MenuItem>
+          </Link>
+
+          <Link to="/cart" style={linkStyle}>
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">
                 <ShoppingCart />

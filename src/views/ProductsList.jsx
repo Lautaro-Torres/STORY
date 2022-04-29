@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import Products from "../components/Products";
 import { useLocation } from "react-router";
 import { useState } from "react";
@@ -48,7 +47,6 @@ const ProductsList = () => {
 
   return (
     <Container>
-      <Navbar />
       <Title>{cat}</Title>
       <FilterContainer>
         <Filter>

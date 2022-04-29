@@ -12,12 +12,16 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
 
   return (
     <Router>
+      
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
 

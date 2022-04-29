@@ -1,5 +1,6 @@
 import { Instagram, MailOutline, Phone, Room } from "@material-ui/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -74,35 +75,22 @@ const Footer = () => {
         <Logo>STORY</Logo>
         <Description> Be part of someone else perception </Description>
         <SocialContainer>
-          <SocialIcon>
-            <Instagram />
-          </SocialIcon>
+          <a href="https://www.instagram.com/lautaro.t/">
+            <SocialIcon>
+              <Instagram />
+            </SocialIcon>
+          </a>
         </SocialContainer>
       </Left>
-      <Center>
-        <Title>Links</Title>
-        <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Frames</ListItem>
-          <ListItem>Prints</ListItem>
-          <ListItem>Postcards</ListItem>
-          <ListItem>Mi cuenta</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
-        </List>
-      </Center>
+      <Center></Center>
       <Right>
         <Title>Contact</Title>
-        <ContactItem>
-          <Room /> Paso 780 CABA
-        </ContactItem>
         <ContactItem>
           <Phone /> +54 9 387 612 1599.
         </ContactItem>
         <ContactItem>
           <MailOutline />
-          Lautarogna6@gmail.com
+          lautarogna6@gmail.com
         </ContactItem>
       </Right>
     </Container>
